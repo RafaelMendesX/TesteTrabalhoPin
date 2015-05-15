@@ -29,6 +29,8 @@ public class Alunos implements Serializable {
 	@Column
 	private String senha;
 
+	
+	
 	public Integer getMatricula() {
 		return matricula;
 	}
