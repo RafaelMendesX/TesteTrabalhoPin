@@ -7,29 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import br.unifor.pin.saa.entity.Turmas;
+import br.unifor.pin.saa.entity.Aulas;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/test-context.xml")
-
-
-public class TurmaDAOTeste {
+public class AulasDAOTeste {
 	
 	@Autowired
-	private TurmasDAO turmaDAO;
-	
-	@Test
-	public void testeSalvar () throws Exception {
-		
-		Turmas turmas = new Turmas();
-		turmas.setId(10);
-		turmaDAO.salvar(turmas);
+	private AulasDAO aulasDAO;
 
+	@Test
+	public void testSalvar() throws Exception {
 		
-		Assert.assertNotNull(turmas.getId());
-		System.out.println(turmas.getId());
-			
+		Aulas aulas = new Aulas();
+		//aulas.setDataAula();
+		aulas.setTema("Poo");
+		
+		aulasDAO.salvar(aulas);
+		
+		Assert.assertNotNull(aulas.getDataAula());
+		System.out.println(aulas.getDataAula());
+		
 	}
+	
+	
 
 }
