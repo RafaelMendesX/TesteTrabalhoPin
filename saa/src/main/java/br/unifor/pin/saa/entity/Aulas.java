@@ -10,6 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author rafael.mendes
+ * 
+ */
+
 @Entity
 @Table(name = "aulas")
 public class Aulas implements Serializable {
@@ -19,10 +24,21 @@ public class Aulas implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
+	@Column
 	private Date DataAula;
 	
 	@Column
 	private String tema;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Date getDataAula() {
 		return DataAula;

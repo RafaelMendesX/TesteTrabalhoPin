@@ -17,7 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 import br.unifor.pin.saa.entity.Instituicoes;
 import br.unifor.pin.saa.exceptions.DAOException;
 
-
+/**
+ * @author james.lucas
+ * 
+ */
 
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
@@ -36,7 +39,7 @@ public class InstituicoesDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Instituicoes> listarPoriInstituicoes(String sigla) {
+	public List<Instituicoes> listarPoriNome(String sigla) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Instituicoes> criteriaQuery = criteriaBuilder.createQuery(Instituicoes.class);
 		Root<Instituicoes> instituicoes = criteriaQuery.from(Instituicoes.class);

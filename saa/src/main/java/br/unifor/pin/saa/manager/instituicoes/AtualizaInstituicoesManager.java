@@ -1,4 +1,4 @@
-package br.unifor.pin.saa.manager.usuario;
+package br.unifor.pin.saa.manager.instituicoes;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -6,21 +6,21 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.saa.bussines.UsuariosBO;
+import br.unifor.pin.saa.bussines.InstituicoesBO;
 import br.unifor.pin.saa.entity.Usuarios;
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
 /**
- * @author patrick.cunha
+ * @author rafael.mendes
  * 
  */
 @RequestScoped
 @ManagedBean(name = "atualizaUsuario")
 @Component(value = "atualizaUsuario")
-public class AtualizaUsuarioManager {
+public class AtualizaInstituicoesManager {
 
 	@Autowired
-	private UsuariosBO usuarioBO;
+	private InstituicoesBO usuarioBO;
 	private Usuarios usuarioSelecionado;
 
 	public String atualizar() {

@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author rafael.mendes
+ * 
+ */
+
 @Entity
 @Table(name = "avaliacoes")
 public class Avaliacoes implements Serializable {
@@ -37,7 +42,4 @@ public class Avaliacoes implements Serializable {
 	public void setNota(Integer nota) {
 		this.nota = nota;
 	}
-	
-	
-	
 }

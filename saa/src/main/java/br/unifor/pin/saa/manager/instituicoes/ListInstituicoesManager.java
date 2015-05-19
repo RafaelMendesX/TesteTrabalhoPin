@@ -1,4 +1,4 @@
-package br.unifor.pin.saa.manager.usuario;
+package br.unifor.pin.saa.manager.instituicoes;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.saa.bussines.UsuariosBO;
+import br.unifor.pin.saa.bussines.UsuarioBO;
 import br.unifor.pin.saa.entity.Usuarios;
 import br.unifor.pin.saa.utils.Navigation;
 /**
@@ -18,22 +18,22 @@ import br.unifor.pin.saa.utils.Navigation;
 @RequestScoped
 @ManagedBean(name="listUsuario")
 @Component(value="listUsuario")
-public class ListUsuarioManager {
+public class ListInstituicoesManager {
 
 	@Autowired
-	private UsuariosBO usuarioBO;
+	private UsuarioBO usuarioBO;
 	private String nome;
 	private List<Usuarios> usuarios;
 	
 	public void lista(){
 		
-		usuarios = usuarioBO.listaInstituicoesPorNome(nome);
+		usuarios = usuarioBO.listaUsuarioPorNome(nome);
 		
 	}
 	
 	public void excluir(Usuarios usuario){
 		usuarioBO.excluir(usuario);
-		usuarios = usuarioBO.listaInstituicoesPorNome(nome);
+		usuarios = usuarioBO.listaUsuarioPorNome(nome);
 	}
 	
 	public String preparaAtualizar(Usuarios usuario){

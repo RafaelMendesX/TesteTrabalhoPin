@@ -2,6 +2,11 @@ package br.unifor.pin.saa.dao;
 
 import java.util.List;
 
+/**
+ * @author rafael.mendes
+ * 
+ */
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -45,10 +50,10 @@ public class AlunosDAO {
 		return query.getResultList();
 	}
 	
-	public Alunos buscaPorId(Integer id) throws DAOException {
-		String jpql = "select a from Alunos a where a.id = :id";
+	public Alunos buscaPorMatricula(Integer matricula) throws DAOException {
+		String jpql = "select a from Alunos a where a.matricula = :matricula";
 		Query query = entityManager.createQuery(jpql);
-		query.setParameter("id", id);
+		query.setParameter("matricula", matricula);
 		
 		try {
 			return (Alunos) query.getSingleResult();

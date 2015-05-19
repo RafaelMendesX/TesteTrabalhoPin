@@ -17,7 +17,7 @@ import br.unifor.pin.saa.exceptions.DAOException;
  */
 @Loggable
 @Component
-public class UsuarioBO {
+public class UsuariosBO {
 
 	@Autowired
 	private UsuarioDAO usuarioDAO;
@@ -34,7 +34,7 @@ public class UsuarioBO {
 	}
 
 	@Loggable(enable=false)
-	public List<Usuarios> listaUsuarioPorNome(String nome) {
+	public List<Usuarios> listaInstituicoesPorNome(String nome) {
 		List<Usuarios> usuarios = usuarioDAO.listarPorNome(nome);
 		return usuarios;
 	}

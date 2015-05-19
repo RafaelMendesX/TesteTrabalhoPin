@@ -17,6 +17,11 @@ import org.springframework.transaction.annotation.Transactional;
 import br.unifor.pin.saa.entity.Cursos;
 import br.unifor.pin.saa.exceptions.DAOException;
 
+/**
+ * @author rafael.mendes
+ * 
+ */
+
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
 public class CursosDAO {

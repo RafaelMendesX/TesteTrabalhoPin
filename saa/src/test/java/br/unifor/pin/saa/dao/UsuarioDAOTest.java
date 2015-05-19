@@ -35,6 +35,32 @@ public class UsuarioDAOTest {
 	}
 	
 	@Test
+	public void testAtualizar() throws Exception  {
+		final String nome = "Mendes";
+		final String nomeAlterado = "PROFESSOR Mendes";
+		final String email = "mendes@gmail.com";
+		final String senha = "123456";
+		final boolean primeiroAcesso = (true);
+		final boolean ativo = (true);
+		
+		Usuarios usuario = new Usuarios();
+		
+		usuario.setNome(nome);
+		usuario.setSenha(senha);
+		usuario.setEmail(email);
+		usuario.setPrimeiroAcesso(primeiroAcesso);
+		usuario.setAtivo(ativo);
+		
+		usuarioDAO.salvar(usuario);
+		usuario.setNome(nomeAlterado);
+		usuarioDAO.atualizar(usuario);
+		
+		Assert.assertEquals(nomeAlterado, usuario.getNome());
+		
+		usuarioDAO.excluir(usuario);
+	}
+	
+	@Test
 	public void testListaPorNome(){
 		List<Usuarios> usuarios = usuarioDAO.listarPorNome("adri");
 		Assert.assertEquals(1, usuarios.size());

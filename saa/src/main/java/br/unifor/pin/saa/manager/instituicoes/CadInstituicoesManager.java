@@ -1,4 +1,4 @@
-package br.unifor.pin.saa.manager.usuario;
+package br.unifor.pin.saa.manager.instituicoes;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -6,23 +6,23 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.saa.bussines.UsuariosBO;
+import br.unifor.pin.saa.bussines.InstituicoesBO;
 import br.unifor.pin.saa.entity.Usuarios;
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
 /**
- * @author patrick.cunha
+ * @author rafael.mendes
  * 
  */
 @RequestScoped
 @ManagedBean(name="cadUsuario")
 @Component(value="cadUsuario")
-public class CadUsuarioManager {
+public class CadInstituicoesManager {
 
 	@Autowired
-	private UsuariosBO usuarioBO;
+	private InstituicoesBO usuarioBO;
 	@Autowired
-	private ListUsuarioManager listUsuario;
+	private ListInstituicoesManager listUsuario;
 	private String nome;
 	private String email;
 	private String senha;

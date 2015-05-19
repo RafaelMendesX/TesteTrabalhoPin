@@ -2,6 +2,12 @@ package br.unifor.pin.saa.dao;
 
 import java.util.List;
 
+/**
+ * @author rafael.mendes
+ * 
+ */
+
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;

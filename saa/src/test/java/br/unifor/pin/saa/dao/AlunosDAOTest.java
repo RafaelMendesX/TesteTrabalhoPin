@@ -22,7 +22,7 @@ public class AlunosDAOTest {
 	@Autowired
 	private AlunosDAO alunosDAO;
 	
-	@Test
+	/*@Test
 	public void testSalvarAluno() throws Exception {
 		Alunos alunos = new  Alunos();
 		alunos.setNome("Rafael");
@@ -36,11 +36,37 @@ public class AlunosDAOTest {
 	}
 	
 	@Test
+	public void testAtualizar() {
+		final String nome = "Rafael";
+		final String nomeAlterado = "Alice";
+		Alunos aluno = new Alunos();
+		aluno.setNome(nome);
+
+		
+		alunosDAO.salvar(aluno);
+		aluno.setNome(nomeAlterado);		
+		alunosDAO.atualizar(aluno);
+
+		Assert.assertEquals(nomeAlterado, aluno.getNome());
+		
+	}
+	
+	@Test
 	public void testListaPorNomeAluno(){
 		List<Alunos> alunos = alunosDAO.listarPorNome("rafa");
 		Assert.assertEquals(1, alunos.size());
 		
 	}
-
+*/
+	@Test
+	public void testExcluir(){
+		Alunos alunos = new  Alunos();
+		alunos.setNome("Rafael");
+		alunos.setEmail("rafa090796@hotmail.com");
+		alunos.setSenha("123456");
+		alunosDAO.salvar(alunos);
+		
+		alunosDAO.excluir(alunos);
+	}
 
 }

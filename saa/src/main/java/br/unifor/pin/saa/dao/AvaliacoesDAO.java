@@ -17,6 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 import br.unifor.pin.saa.entity.Avaliacoes;
 import br.unifor.pin.saa.exceptions.DAOException;
 
+/**
+ * @author rafael.mendes
+ * 
+ */
 
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
@@ -44,10 +48,10 @@ public class AvaliacoesDAO {
 		return query.getResultList();
 	}
 
-	public Avaliacoes buscaPorId(Integer id) throws DAOException {
-		String jpql = "select a from Avaliacoes a where a.id = :id";
+	public Avaliacoes buscaPornumeroDaAvaliacao(Integer numeroDaAvaliacao) throws DAOException {
+		String jpql = "select a from Avaliacoes a where a.numeroDaAvaliacao = :numeroDaAvaliacao";
 		Query query = entityManager.createQuery(jpql);
-		query.setParameter("id", id);
+		query.setParameter("numeroDaAvaliacao", numeroDaAvaliacao);
 		
 		try {
 			return (Avaliacoes) query.getSingleResult();
