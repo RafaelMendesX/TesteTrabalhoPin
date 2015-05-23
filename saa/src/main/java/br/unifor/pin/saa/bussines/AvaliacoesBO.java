@@ -1,19 +1,29 @@
 package br.unifor.pin.saa.bussines;
 
+import java.io.NotActiveException;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 import br.unifor.pin.saa.aspectj.Loggable;
 import br.unifor.pin.saa.dao.AvaliacoesDAO;
 import br.unifor.pin.saa.entity.Avaliacoes;
+import br.unifor.pin.saa.entity.Usuarios;
 import br.unifor.pin.saa.exceptions.DAOException;
+
 
 public class AvaliacoesBO {
 	@Autowired
 	private AvaliacoesDAO avaliacoesDAO;
 	
 	public void salvar(Avaliacoes avaliacoes) {
+		
+			avaliacoes.setNumerodaAvaliacao(1);
+			avaliacoes.setNota(10);
+			avaliacoesDAO.salvar(avaliacoes);
+		
 		
 	}
 	
@@ -23,14 +33,14 @@ public class AvaliacoesBO {
 	}
 
 	@Loggable(enable=false)
-	public List<Avaliacoes> listaAulas(String temas) {
-		List<Avaliacoes> avaliacoes = avaliacoesDAO.listarPorTema(temas);
+	public List<Avaliacoes> listaAvaliacoes(String notas) {
+		List<Avaliacoes> avaliacoes = avaliacoesDAO.listarPorNota(notas);
 		return avaliacoes;
 	}
 	
 	public Avaliacoes buscarPorId(Integer id){
 		try {
-			return avaliacoesDAO.buscaPorId(id);
+			return avaliacoesDAO.buscaPornumeroDaAvaliacao(id);
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
@@ -40,7 +50,7 @@ public class AvaliacoesBO {
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void excluir(Avaliacoes avaliacoes) {
 		try {
-			avaliacoes = avaliacoesDAO.buscaPorId(avaliacoes.getId());
+			avaliacoes = avaliacoesDAO.buscaPornumeroDaAvaliacao(avaliacoes.getNumerodaAvaliacao());
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}

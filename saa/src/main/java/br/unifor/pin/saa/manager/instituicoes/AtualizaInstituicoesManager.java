@@ -2,53 +2,60 @@ package br.unifor.pin.saa.manager.instituicoes;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import br.unifor.pin.saa.bussines.InstituicoesBO;
-import br.unifor.pin.saa.entity.Usuarios;
+import br.unifor.pin.saa.entity.Instituicoes;
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
 /**
- * @author rafael.mendes
+ * @author james.lucas
  * 
  */
 @RequestScoped
-@ManagedBean(name = "atualizaUsuario")
-@Component(value = "atualizaUsuario")
+@ManagedBean(name = "atualizaInstituicoes")
+@Component(value = "atualizaInstituicoes")
 public class AtualizaInstituicoesManager {
 
 	@Autowired
-	private InstituicoesBO usuarioBO;
-	private Usuarios usuarioSelecionado;
-
+	private InstituicoesBO instituicoesBO;
+	private Instituicoes instituicaoSelecionada;
+	
 	public String atualizar() {
-		usuarioBO.atualizar(usuarioSelecionado);
+		instituicoesBO.atualizar(instituicaoSelecionada);
 		MessagesUtils.info("Usuário atualizado com sucesso!");
 
 		return Navigation.SUCESSO;
 	}
 
-	public String preparaAtualizar(Usuarios usuario) {
-		usuarioSelecionado = usuarioBO.buscarPorId(usuario.getId());
+	public String preparaAtualizar(Instituicoes instituicoes) {
+		instituicaoSelecionada = instituicoesBO.busInstituicoes(instituicoes.getSigla());
 
 		return Navigation.ATUALIZA;
 	}
 	
 	public void limparDados(){
-		usuarioSelecionado.setNome("");
-		usuarioSelecionado.setEmail("");
-		usuarioSelecionado.setSenha("");
-		usuarioSelecionado.setAtivo(false);
-		usuarioSelecionado.setPrimeiroAcesso(true);
+		instituicaoSelecionada.setSigla("");
+		instituicaoSelecionada.setNome("");
+		
 	}
 
-	public Usuarios getUsuarioSelecionado() {
-		return usuarioSelecionado;
+	public Instituicoes getInstituicaoSelecionada () {
+		return instituicaoSelecionada;
 	}
-	public void setUsuarioSelecionado(Usuarios usuarioSelecionado) {
-		this.usuarioSelecionado = usuarioSelecionado;
+	public void setInstituicaoSelecionada(Instituicoes instituicoaoSelecionada) {
+		this.instituicaoSelecionada = instituicoaoSelecionada;
 	}
+	
+	
+	public InstituicoesBO getInstituicoesBO() {
+		return instituicoesBO;
+	}
+
+	public void setInstituicoesBO(InstituicoesBO instituicoesBO) {
+		this.instituicoesBO = instituicoesBO;
+	}
+
+	
 	
 }

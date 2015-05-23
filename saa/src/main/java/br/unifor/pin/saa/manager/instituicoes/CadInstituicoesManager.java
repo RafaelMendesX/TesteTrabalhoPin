@@ -2,39 +2,35 @@ package br.unifor.pin.saa.manager.instituicoes;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import br.unifor.pin.saa.bussines.InstituicoesBO;
-import br.unifor.pin.saa.entity.Usuarios;
+import br.unifor.pin.saa.entity.Instituicoes;
 import br.unifor.pin.saa.utils.MessagesUtils;
 import br.unifor.pin.saa.utils.Navigation;
 /**
- * @author rafael.mendes
+ * @author james.lucas
  * 
  */
 @RequestScoped
-@ManagedBean(name="cadUsuario")
-@Component(value="cadUsuario")
+@ManagedBean(name="cadInstituicao")
+@Component(value="cadInstituicao")
 public class CadInstituicoesManager {
 
 	@Autowired
-	private InstituicoesBO usuarioBO;
+	private InstituicoesBO instituicoesBO;
 	@Autowired
-	private ListInstituicoesManager listUsuario;
+	private ListInstituicoesManager listInstiuicoes;
+	private String sigla;
 	private String nome;
-	private String email;
-	private String senha;
 	
 	public String salvar(){
-		Usuarios usuario = new Usuarios();
-		usuario.setNome(nome);
-		usuario.setEmail(email);
-		usuario.setSenha(senha);
-		usuarioBO.salvar(usuario);
-		MessagesUtils.info("Usuário salvo com sucesso!");
-		listUsuario.lista();
+		Instituicoes instituicoes = new Instituicoes();
+		instituicoes.setSigla(sigla);
+		instituicoes.setNome(nome);
+		instituicoesBO.salvar(instituicoes);
+		MessagesUtils.info("Instituição salva com sucesso!");
+		listInstiuicoes.lista();
 		
 		return Navigation.SUCESSO;
 	}
@@ -45,31 +41,44 @@ public class CadInstituicoesManager {
 		return Navigation.SUCESSO;
 	}
 			
-	public void limpaDados(){
+	public void limpaDados() {
 		this.nome = "";
-		this.email = "";
-		this.senha = "";
+		this.sigla = "";
+		
+	}
+	
+
+	public InstituicoesBO getInstituicoesBO() {
+		return instituicoesBO;
+	}
+
+	public void setInstituicoesBO(InstituicoesBO instituicoesBO) {
+		this.instituicoesBO = instituicoesBO;
+	}
+
+	public ListInstituicoesManager getListInstiuicoes() {
+		return listInstiuicoes;
+	}
+
+	public void setListInstiuicoes(ListInstituicoesManager listInstiuicoes) {
+		this.listInstiuicoes = listInstiuicoes;
+	}
+
+	public String getSigla() {
+		return sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
 	}
 
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 	
 }
